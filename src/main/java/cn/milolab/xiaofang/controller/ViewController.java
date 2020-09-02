@@ -26,7 +26,7 @@ public class ViewController {
 
     @GetMapping({"/basket"})
     public String basketView(Model model, HttpSession session){
-        model.addAttribute("basket", goodsService.getBasketItemsInfo(session));
+        model.addAttribute("basket", goodsService.getBasketRenderInfo(session));
         return "basket";
     }
 }

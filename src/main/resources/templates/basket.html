@@ -1,12 +1,21 @@
 <html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+
+  <!-- 引用元数据 -->
   <head th:include="index :: meta"></head>
   <body>
     <div class="container">
+
+      <!-- 引用alert和header-->
       <div th:include="index :: header"></div>
       <div th:replace="index :: alert"></div>
+
+      <!-- 页面脚本 -->
       <script src="js/basket.js"></script>
 
+      <!-- 购物车列表 -->
       <table class="table table-striped">
+
+        <!-- 表头 -->
         <thead>
           <tr>
             <td>id</td>
@@ -16,6 +25,8 @@
             <td>sum</td>
           </tr>
         </thead>
+
+        <!-- 表体 -->
         <tbody>
           <tr th:each="item : ${basket}">
             <td th:text="${item.goods.id}"></td>
@@ -27,11 +38,13 @@
         </tbody>
       </table>
 
+      <!-- 结算按钮 -->
       <button type="button"
               class="btn btn-primary center-block checkout-button"
               style="margin-bottom: 10px"
       >checkout</button>
 
+      <!-- 清空购物车按钮 -->
       <button type="button"
               class="btn btn-danger center-block clear-button"
       >clear basket</button>

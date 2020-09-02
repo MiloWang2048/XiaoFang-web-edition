@@ -1,26 +1,45 @@
 <html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+  <!-- 一个可复用的head标签 -->
   <head th:fragment="meta">
+
+    <!-- meta data-->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- 页面标题 -->
     <title>XiaoFang Convenience</title>
-    <!-- Bootstrap -->
+
+    <!-- 依赖 -->
     <link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="js/jquery-3.5.1.js"></script>
     <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
     <script src="js/axios.js"></script>
+
+    <!-- 全局脚本 -->
     <script src="js/common.js"></script>
+
+    <!-- 图标 -->
     <link rel="icon" type="image/x-icon" href="favicon.ico"/>
+
+    <!-- 全局样式表 -->
     <link rel="stylesheet" href="css/index.css">
   </head>
+
   <body>
     <div class="container">
+      <!-- 页面脚本 -->
       <script src="js/store.js"></script>
 
+      <!-- 可复用头部 -->
       <div th:fragment="header">
+
+        <!-- 大标题 -->
         <div class="page-header">
           <h1>XiaoFang Convenience Store <small>Web Edition</small></h1>
         </div>
+
+        <!-- 导航栏 -->
         <ul class="nav nav-tabs">
           <li role="presentation" th:class="${#execInfo.processedTemplateName}=='index'?'active':''">
             <a href="/">Store</a>
@@ -31,7 +50,10 @@
         </ul>
       </div>
 
+      <!-- 货品列表 -->
       <table class="table table-striped">
+
+        <!-- 表头 -->
         <thead>
           <tr>
             <td>id</td>
@@ -39,11 +61,17 @@
             <td>price</td>
           </tr>
         </thead>
+
+        <!-- 表体 -->
         <tbody>
           <tr th:each="goods : ${goodsList}">
+
+            <!-- 商品信息 -->
             <td th:text="${goods.id}"></td>
             <td th:text="${goods.name}"></td>
             <td th:text="${#numbers.formatDecimal(goods.price, 1, 2)}"></td>
+
+            <!-- 添加购物车按钮 -->
             <td>
               <button type="button"
                       class="btn btn-primary btn-xs glyphicon glyphicon-plus add-button"
@@ -55,6 +83,8 @@
       </table>
 
     </div>
+
+    <!-- 可复用alert -->
     <div th:fragment="alert" class="alert alert-success xf-alert" role="alert"> </div>
   </body>
 </html>

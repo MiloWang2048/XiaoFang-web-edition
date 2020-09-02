@@ -1,10 +1,14 @@
 spring:
   datasource:
+    # 驱动名
     driver-class-name: com.mysql.cj.jdbc.Driver
+    # 数据库jdbc url，指定字符编码和时区
     url: jdbc:mysql://localhost:3306/xiaofang?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
     username: xiaofang
     password: xiaofang2020
 
 mybatis:
+  # mybatis的mapper路径配置
   mapper-locations: "classpath:/mapper/*.xml"
+  # 实体类路径，有result map的情况下可以省略
   type-aliases-package: "cn.milolab.xiaofang.bean.entity"
