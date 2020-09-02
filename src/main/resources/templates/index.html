@@ -1,26 +1,52 @@
 <html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>XiaoFang Convenience</title>
-        <!-- Bootstrap -->
-        <link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
-        <script src="jquery-3.5.1.js"></script>
-        <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-    </head>
-    <body>
-        <div class="container">
-            <div th:fragment="header">
-                <div class="page-header">
-                    <h1>XiaoFang Convenience Store<small>Web Edition</small></h1>
-                </div>
-            </div>
-            <ul class="nav nav-tabs">
-                <li role="presentation" class="active"><a href="/">Store</a></li>
-                <li role="presentation"><a href="/basket">Basket</a></li>
-            </ul>
+  <head th:fragment="meta">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>XiaoFang Convenience</title>
+    <!-- Bootstrap -->
+    <link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="js/jquery-3.5.1.js"></script>
+    <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <link rel="icon" type="image/x-icon" href="favicon.ico"/>
+  </head>
+  <body>
+    <div class="container">
 
+      <div th:fragment="header">
+        <div class="page-header">
+          <h1>XiaoFang Convenience Store <small>Web Edition</small></h1>
         </div>
-    </body>
+        <ul class="nav nav-tabs">
+          <li role="presentation" th:class="${#execInfo.processedTemplateName}=='index'?'active':''">
+            <a href="/">Store</a>
+          </li>
+          <li role="presentation" th:class="${#execInfo.processedTemplateName}=='basket'?'active':''">
+            <a href="/basket">Basket</a>
+          </li>
+        </ul>
+      </div>
+
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <td>id</td>
+            <td>name</td>
+            <td>price</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="goods : ${goodsList}">
+            <td th:text="${goods.id}"></td>
+            <td th:text="${goods.name}"></td>
+            <td th:text="${goods.price}"></td>
+            <td>
+              <button type="button" class="btn btn-primary btn-sm glyphicon glyphicon-plus add-button"></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </body>
 </html>

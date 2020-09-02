@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.milolab.xiaofang.dao.GoodsDAO">
+    <resultMap id="GoodsMap" type="cn.milolab.xiaofang.bean.entity.Goods">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="price" column="price"/>
+        <result property="isImported" column="is_imported"/>
+    </resultMap>
+
+    <select id="getAllGoods" resultMap="GoodsMap">
+        SELECT *
+        FROM goods
+        ORDER BY goods.id DESC
+    </select>
+</mapper>

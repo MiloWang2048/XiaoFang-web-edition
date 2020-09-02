@@ -1,5 +1,8 @@
 package cn.milolab.xiaofang.controller;
 
+import cn.milolab.xiaofang.bean.entity.Goods;
+import cn.milolab.xiaofang.dao.GoodsDAO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,15 +12,17 @@ import org.springframework.web.bind.annotation.GetMapping;
  */
 @Controller
 public class ViewController {
-    @GetMapping({"", "index"})
+    @Autowired
+    GoodsDAO goodsDAO;
+
+    @GetMapping({"", "/store"})
     public String indexView(Model model){
-        model.addAttribute("hello", "hello, thymeleaf!");
+        model.addAttribute("goodsList", goodsDAO.getAllGoods());
         return "index";
     }
 
     @GetMapping({"/basket"})
     public String basketView(Model model){
-        model.addAttribute("index", true);
         return "basket";
     }
 }
