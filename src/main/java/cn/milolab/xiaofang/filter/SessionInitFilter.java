@@ -22,10 +22,10 @@ public class SessionInitFilter implements Filter {
         var basketObject = session.getAttribute("basket");
         if(!(basketObject instanceof BasketBO)){
             basketObject = new BasketBO();
+            var basket = (BasketBO) basketObject;
+            basket.setBasketItems(new HashMap<>());
         }
-        var basket = (BasketBO) basketObject;
-        basket.setBasketItems(new HashMap<>());
-        session.setAttribute("basket", basket);
+        session.setAttribute("basket", basketObject);
         filterChain.doFilter(servletRequest, servletResponse);
     }
 }

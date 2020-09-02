@@ -9,11 +9,14 @@
     <script src="js/jquery-3.5.1.js"></script>
     <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
     <script src="js/axios.js"></script>
+    <script src="js/common.js"></script>
     <link rel="icon" type="image/x-icon" href="favicon.ico"/>
+    <link rel="stylesheet" href="css/index.css">
   </head>
   <body>
     <div class="container">
       <script src="js/store.js"></script>
+
       <div th:fragment="header">
         <div class="page-header">
           <h1>XiaoFang Convenience Store <small>Web Edition</small></h1>
@@ -44,7 +47,7 @@
             <td>
               <button type="button"
                       class="btn btn-primary btn-sm glyphicon glyphicon-plus add-button"
-                      th:attr="data-goods-id=${goods.id}"
+                      th:attr="data-goods-id=${goods.id},data-goods-name=${goods.name}"
               ></button>
             </td>
           </tr>
@@ -52,5 +55,6 @@
       </table>
 
     </div>
+    <div th:fragment="alert" class="alert alert-success xf-alert" role="alert"> </div>
   </body>
 </html>

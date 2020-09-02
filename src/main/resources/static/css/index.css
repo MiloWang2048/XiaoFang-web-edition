@@ -1,0 +1,19 @@
+.xf-alert{
+    position: fixed;
+    bottom: 10vh;
+    left: 0;
+    right: 0;
+    width: 40vw;
+    padding: 7px;
+    margin: 0 auto;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    display: none;
+}
+
+thead{
+    font-size: large;
+    font-weight: bold;
+}

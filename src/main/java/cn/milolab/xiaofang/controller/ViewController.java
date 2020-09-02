@@ -31,7 +31,6 @@ public class ViewController {
     @GetMapping({"/basket"})
     public String basketView(Model model, HttpSession session){
         model.addAttribute("basket", goodsService.getBasketItems(session));
-        log.info(session.getAttribute("basket").toString());
         return "basket";
     }
 }
