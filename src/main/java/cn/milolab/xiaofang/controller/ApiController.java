@@ -2,7 +2,9 @@ package cn.milolab.xiaofang.controller;
 
 import cn.milolab.xiaofang.bean.business.BasketBO;
 import cn.milolab.xiaofang.bean.request.AddToCartRequest;
+import cn.milolab.xiaofang.service.GoodsService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +20,9 @@ import java.util.HashMap;
 @RequestMapping("/api")
 @Slf4j
 public class ApiController {
+    @Autowired
+    GoodsService goodsService;
+
     @PostMapping("add_to_basket")
     public void addToBasket(@RequestBody AddToCartRequest request, HttpSession session) {
         var basket = (BasketBO) session.getAttribute("basket");
@@ -29,8 +34,12 @@ public class ApiController {
     }
 
     @PostMapping("clear_basket")
-    public void clearBasket( HttpSession session) {
-        var basket = (BasketBO) session.getAttribute("basket");
-        basket.setBasketItems(new HashMap<>());
+    public void clearBasket(HttpSession session) {
+        goodsService.clearBasketItems(session);
+    }
+
+    @PostMapping("checkout")
+    public double checkout(HttpSession session) {
+        return goodsService.checkout(session);
     }
 }
