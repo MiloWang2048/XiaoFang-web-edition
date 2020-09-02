@@ -11,16 +11,11 @@
     </head>
     <body>
         <div class="container">
-            <div th:fragment="header">
-                <div class="page-header">
-                    <h1>XiaoFang Convenience Store<small>Web Edition</small></h1>
-                </div>
-            </div>
+<!--            <div th:insert="header :: index"></div>-->
             <ul class="nav nav-tabs">
-                <li role="presentation" class="active"><a href="/">Store</a></li>
-                <li role="presentation"><a href="/basket">Basket</a></li>
+                <li role="presentation"><a href="/">Store</a></li>
+                <li role="presentation" class="active"><a href="/basket">Basket</a></li>
             </ul>
-
         </div>
     </body>
 </html>
