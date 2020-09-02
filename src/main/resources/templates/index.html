@@ -46,7 +46,7 @@
             <td th:text="${#numbers.formatDecimal(goods.price, 1, 2)}"></td>
             <td>
               <button type="button"
-                      class="btn btn-primary btn-sm glyphicon glyphicon-plus add-button"
+                      class="btn btn-primary btn-xs glyphicon glyphicon-plus add-button"
                       th:attr="data-goods-id=${goods.id},data-goods-name=${goods.name}"
               ></button>
             </td>
