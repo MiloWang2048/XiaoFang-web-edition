@@ -3,6 +3,8 @@
   <body>
     <div class="container">
       <div th:include="index :: header"></div>
+      <div th:replace="index :: alert"></div>
+      <script src="js/basket.js"></script>
 
       <table class="table table-striped">
         <thead>
@@ -18,12 +20,16 @@
           <tr th:each="item : ${basket}">
             <td th:text="${item.goods.id}"></td>
             <td th:text="${item.goods.name}"></td>
-            <td th:text="${item.goods.price}"></td>
+            <td th:text="${#numbers.formatDecimal(item.goods.price, 0, 2)}"></td>
             <td th:text="${item.amount}"></td>
             <td th:text="${#numbers.formatDecimal(item.goods.price * item.amount, 0, 2)}"></td>
           </tr>
         </tbody>
       </table>
+
+      <button type="button"
+              class="btn btn-danger center-block clear-button"
+      >clear basket</button>
     </div>
   </body>
 </html>

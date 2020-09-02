@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
 
 /**
  * @author milow
@@ -25,5 +26,11 @@ public class ApiController {
         items.put(goodsId, items.getOrDefault(goodsId, 0) + 1);
         basket.setBasketItems(items);
         session.setAttribute("basket", basket);
+    }
+
+    @PostMapping("clear_basket")
+    public void clearBasket( HttpSession session) {
+        var basket = (BasketBO) session.getAttribute("basket");
+        basket.setBasketItems(new HashMap<>());
     }
 }
