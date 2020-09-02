@@ -16,4 +16,12 @@ public interface GoodsDAO {
      * @return 商品列表
      */
     List<Goods> getAllGoods();
+
+    /**
+     * 获取指定的goods
+     *
+     * @param id 商品id
+     * @return Goods实体
+     */
+    Goods findById(int id);
 }

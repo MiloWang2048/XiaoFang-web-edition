@@ -13,6 +13,12 @@
     <select id="getAllGoods" resultMap="GoodsMap">
         SELECT *
         FROM goods
-        ORDER BY goods.id DESC
+        ORDER BY goods.id
+    </select>
+
+    <select id="findById" resultMap="GoodsMap">
+        SELECT *
+        FROM goods
+        WHERE goods.id = #{id}
     </select>
 </mapper>

@@ -7,6 +7,8 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 初始化session
@@ -22,6 +24,7 @@ public class SessionInitFilter implements Filter {
             basketObject = new BasketBO();
         }
         var basket = (BasketBO) basketObject;
+        basket.setBasketItems(new HashMap<>());
         session.setAttribute("basket", basket);
         filterChain.doFilter(servletRequest, servletResponse);
     }

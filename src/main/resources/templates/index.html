@@ -8,11 +8,12 @@
     <link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="js/jquery-3.5.1.js"></script>
     <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="js/axios.js"></script>
     <link rel="icon" type="image/x-icon" href="favicon.ico"/>
   </head>
   <body>
     <div class="container">
-
+      <script src="js/store.js"></script>
       <div th:fragment="header">
         <div class="page-header">
           <h1>XiaoFang Convenience Store <small>Web Edition</small></h1>
@@ -39,9 +40,12 @@
           <tr th:each="goods : ${goodsList}">
             <td th:text="${goods.id}"></td>
             <td th:text="${goods.name}"></td>
-            <td th:text="${goods.price}"></td>
+            <td th:text="${#numbers.formatDecimal(goods.price, 1, 2)}"></td>
             <td>
-              <button type="button" class="btn btn-primary btn-sm glyphicon glyphicon-plus add-button"></button>
+              <button type="button"
+                      class="btn btn-primary btn-sm glyphicon glyphicon-plus add-button"
+                      th:attr="data-goods-id=${goods.id}"
+              ></button>
             </td>
           </tr>
         </tbody>
