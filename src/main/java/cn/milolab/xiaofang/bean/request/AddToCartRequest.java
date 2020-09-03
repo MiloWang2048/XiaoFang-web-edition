@@ -11,5 +11,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AddToCartRequest {
+
+    /**
+     * 要添加商品的id
+     */
     private int goodsId;
 }

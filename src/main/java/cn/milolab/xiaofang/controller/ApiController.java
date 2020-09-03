@@ -23,21 +23,33 @@ public class ApiController {
     @Autowired
     GoodsService goodsService;
 
+    /**
+     * 添加一个商品到购物车
+     *
+     * @param request 用户请求
+     * @param session 用户session
+     */
     @PostMapping("add_to_basket")
     public void addToBasket(@RequestBody AddToCartRequest request, HttpSession session) {
-        var basket = (BasketBO) session.getAttribute("basket");
-        var items = basket.getBasketItems();
-        var goodsId = request.getGoodsId();
-        items.put(goodsId, items.getOrDefault(goodsId, 0) + 1);
-        basket.setBasketItems(items);
-        session.setAttribute("basket", basket);
+        goodsService.addToBasket(request, session);
     }
 
+    /**
+     * 清空购物车
+     *
+     * @param session 用户session
+     */
     @PostMapping("clear_basket")
     public void clearBasket(HttpSession session) {
         goodsService.clearBasketItems(session);
     }
 
+    /**
+     * 结算
+     *
+     * @param session 用户session
+     * @return 总价格
+     */
     @PostMapping("checkout")
     public double checkout(HttpSession session) {
         return goodsService.checkout(session);

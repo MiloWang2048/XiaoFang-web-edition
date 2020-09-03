@@ -16,10 +16,20 @@ public class Goods {
     private Double price;
     private Boolean isImported;
 
+    /**
+     * 商品名称的getter
+     *
+     * @return 处理后的名称
+     */
     public String getName() {
         return isImported ? name + " <I>" : name;
     }
 
+    /**
+     * 商品价格getter
+     *
+     * @return 处理后的价格
+     */
     public Double getPrice() {
         return isImported ? 1.2 * price : price;
     }

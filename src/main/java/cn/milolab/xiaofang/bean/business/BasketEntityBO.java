@@ -1,4 +1,4 @@
-package cn.milolab.xiaofang.bean.view;
+package cn.milolab.xiaofang.bean.business;
 
 import cn.milolab.xiaofang.bean.entity.Goods;
 import lombok.AllArgsConstructor;
@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class BasketItemsVO {
+public class BasketEntityBO {
     private Goods goods;
     private Integer amount;
 }

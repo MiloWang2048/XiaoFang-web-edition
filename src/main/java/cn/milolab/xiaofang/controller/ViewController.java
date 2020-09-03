@@ -20,13 +20,17 @@ public class ViewController {
 
     @GetMapping({"", "/store"})
     public String indexView(Model model){
+
+        // 获取商品列表并添加到视图模型
         model.addAttribute("goodsList", goodsService.getAllGoods());
         return "index";
     }
 
     @GetMapping({"/basket"})
     public String basketView(Model model, HttpSession session){
-        model.addAttribute("basket", goodsService.getBasketItemsInfo(session));
+
+        // 获取购物车列表并添加到视图模型
+        model.addAttribute("basket", goodsService.getBasketEntities(session));
         return "basket";
     }
 }
