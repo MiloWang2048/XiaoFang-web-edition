@@ -1,5 +1,6 @@
 package cn.milolab.xiaofang.controller;
 
+import cn.milolab.xiaofang.bean.business.BasketBO;
 import cn.milolab.xiaofang.service.GoodsService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,7 @@ public class ViewController {
 
         // 获取商品列表并添加到视图模型
         model.addAttribute("goodsList", goodsService.getAllGoods());
+
         return "index";
     }
 
@@ -30,7 +32,9 @@ public class ViewController {
     public String basketView(Model model, HttpSession session){
 
         // 获取购物车列表并添加到视图模型
-        model.addAttribute("basket", goodsService.getBasketEntities(session));
+        var basket = (BasketBO)session.getAttribute("basket");
+        model.addAttribute("basketItems", basket.getBasketItems());
+
         return "basket";
     }
 }

@@ -1,5 +1,6 @@
 package cn.milolab.xiaofang.bean.business;
 
+import cn.milolab.xiaofang.bean.entity.Goods;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,5 +15,8 @@ import java.util.Map;
 @AllArgsConstructor
 @NoArgsConstructor
 public class BasketBO {
-    private Map<Integer, Integer> basketItems;
+    /**
+     * 购物车列表，由商品实例映射到商品数量
+     */
+    private Map<Goods, Integer> basketItems;
 }
