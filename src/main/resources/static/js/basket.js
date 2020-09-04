@@ -10,6 +10,7 @@ $(document).ready(() => {
     $(".checkout-button").click(() => {
         axios.post('/api/checkout', {}).then(res => {
             alert(`$${res.data} please!\nThank you!`);
+            location.reload();
         })
     })
 })
